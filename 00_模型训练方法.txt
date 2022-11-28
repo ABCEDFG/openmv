@@ -1,0 +1,32 @@
+采集:
+	每个分类至少100个样本
+
+	打开OPENMV IDE -> 工具 -> 数据集编辑器 
+	-> 新数据集
+	-> 新建一个文件夹 -> 
+	点击编辑框新类文件夹创建类别 ->
+	-> 链接openmv -> 选择对应类别的文件夹 
+	-> 并点击左侧编辑框采集数据按钮 
+	-> IDE就会自动保存到对应类的文件夹里面，并自动按序号命名
+
+上传:
+	登录edge impulse
+	-> 新建项目并命名
+	->Data acquisition
+		-> Collect data面板 ->Upload data
+		->选择文件并分好类和命名
+
+在线训练:
+	->impulse design
+		-> create impulse ->add process block ->image
+		->add learnning block -> Transfer Learning (Images) -> 保存
+		->左侧选择image ->选择对应选项保存生成fitures(预处理)
+		->左侧选择transfer learnning -> 参数默认就好 -> 点击train开始训练
+	->retrain model (可用可不用,作用是重新训练)
+	->live classification -> 在线对单张图片测试
+	->model testing -> 测试数据 ->classify all 用生成的模型测试数据
+	->version -> 填写版本信息并确认
+
+运行:
+	->deployment -> 选择openmv平台 -> build
+	->把标签文件和模型文件放到openmv的磁盘里面,运行ei_image_classification.py里面的示例代码
